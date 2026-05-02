@@ -1,4 +1,5 @@
 venv/
+outputs/
 __pycache__/
 *.pyc
 *.pyo
@@ -27,4 +28,5 @@ dmypy.json
 *.pkl
 *.npz
 *.csv
-.git/
+*.pt
+
