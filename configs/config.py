@@ -149,32 +149,55 @@ FUSION_CONFIG = {
 # =============================================================================
 # MAPPING EMOTIONS POUR FUSION
 # =============================================================================
+#
+# Mapping vers les 7 emotions de base d'Ekman (1992).
+# Justification academique:
+#   - Demszky et al. (2020) fournissent ce mapping officiel pour GoEmotions
+#   - FER2013 utilise nativement la taxonomie d'Ekman a 7 classes
+#   - WESAD est mappe selon la litterature (stress->fear, amusement->happy)
+#
+# Reference: voir Chapitre IV.4 du memoire pour la justification complete
 
 EMOTION_MAPPING = {
-    # Mapping vers categories communes
-    "stress": {
-        "wesad": ["stress"],
+    "happy": {
+        "wesad": ["amusement"],
+        "fer2013": ["happy"],
+        "goemotions": [
+            "joy", "amusement", "excitement", "love", "gratitude",
+            "optimism", "pride", "admiration", "caring", "approval", "relief"
+        ]
+    },
+    "sad": {
+        "wesad": [],
+        "fer2013": ["sad"],
+        "goemotions": ["sadness", "grief", "disappointment", "remorse"]
+    },
+    "angry": {
+        "wesad": [],
+        "fer2013": ["angry"],
+        "goemotions": ["anger", "annoyance", "disapproval"]
+    },
+    "fear": {
+        "wesad": ["stress"],   # Le stress est physiologiquement proche de la peur
         "fer2013": ["fear"],
         "goemotions": ["fear", "nervousness"]
     },
-    "joy": {
-        "wesad": ["amusement"],
-        "fer2013": ["happy"],
-        "goemotions": ["joy", "amusement", "excitement"]
+    "disgust": {
+        "wesad": [],
+        "fer2013": ["disgust"],
+        "goemotions": ["disgust", "embarrassment"]
+    },
+    "surprise": {
+        "wesad": [],
+        "fer2013": ["surprise"],
+        "goemotions": ["surprise", "realization", "confusion", "curiosity", "desire"]
     },
     "neutral": {
         "wesad": ["baseline"],
         "fer2013": ["neutral"],
         "goemotions": ["neutral"]
-    },
-    "anger": {
-        "wesad": [],
-        "fer2013": ["angry"],
-        "goemotions": ["anger", "annoyance"]
-    },
-    "sadness": {
-        "wesad": [],
-        "fer2013": ["sad"],
-        "goemotions": ["sadness", "disappointment", "grief"]
     }
 }
+
+# Liste ordonnee des 7 emotions d'Ekman (pour indexation)
+EKMAN_EMOTIONS = ["happy", "sad", "angry", "fear", "disgust", "surprise", "neutral"]
